@@ -1,3 +1,4 @@
+import { signOutUser } from "@/redux/userSlice";
 import {
   HomeIcon,
   HashtagIcon,
@@ -6,32 +7,59 @@ import {
   BellIcon,
   UserIcon,
   DotsCircleHorizontalIcon,
+  DotsHorizontalIcon,
 } from "@heroicons/react/outline";
+import { signOut } from "firebase/auth";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+
+
+
+async function handleSignOut() {
+  await signOut(auth)
+  dispatch(signOutUser())
+}
 
 export default function Sidebar() {
   return (
-    <div className="h-full hidden sm:flex flex-col fixed
-    xl:ml-24">
-      
-      <nav className="h-full xl:space-y-1.5 relative">
-      <div className="xl:p-3 flex  xl:justify-start justify-center items-center py-3">
-        <Image className="invert" src={"/assets/twitter-logo-black-png.png"} width={34} height={34}/>
-      </div>
+    <div
+      className="h-full  hidden sm:flex flex-col fixed
+    xl:ml-24 "
+    >
+      <nav className="h-full xl:space-y-1.5 space-x-1.5 relative">
+        <div className="xl:p-3 flex  xl:justify-start justify-center items-center py-3">
+          <Image
+            className="invert"
+            src={"/assets/twitter-logo-black-png.png"}
+            width={34}
+            height={34}
+          />
+        </div>
         <SidebarLink Icon={HomeIcon} text={"Home"} />
         <SidebarLink Icon={HashtagIcon} text={"Explore"} />
         <SidebarLink Icon={BellIcon} text={"Notifications"} />
         <SidebarLink Icon={InboxIcon} text={"Messages"} />
         <SidebarLink Icon={BookmarkIcon} text={"Bookmarks"} />
         <SidebarLink Icon={UserIcon} text={"Profile"} />
-        <SidebarLink Icon={DotsCircleHorizontalIcon} text={"More"}/>
-        <button className="hidden xl:inline bg-[#1d9bf0] rounded-full
-        h-[52px] w-[200px] text-lg font-bold">
-            Tweet
+        <SidebarLink Icon={DotsCircleHorizontalIcon} text={"More"} />
+        <button
+          className="hidden xl:inline bg-[#1d9bf0] rounded-full
+        h-[52px] w-[200px] text-lg font-bold"
+        >
+          Tweet
         </button>
-        <div className="absolute bottom-0">User</div>
+        <div className="absolute flex justify-center items-center xl:p-3 p-0.5  space-x-3 hover:bg-white hover:bg-opacity-10 rounded-full cursor-pointer bottom-0">
+          <img
+            className="w-10 h-10 rounded-full object-cover"
+            src="/assets/kylie-jenner-instagram.jpg"
+          />
+          <div className="hidden xl:inline">
+            <h1 className="font-bold">name</h1>
+            <h1 className="text-gray-500">username</h1>
+          </div>
+          <DotsHorizontalIcon className="h-5 hidden xl:inline" />
+        </div>
       </nav>
-      
     </div>
   );
 }

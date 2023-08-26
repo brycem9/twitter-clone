@@ -15,3 +15,11 @@
 * {
    
 }
+
+.hover-animation2 {
+    @apply hover:cursor-pointer hover:bg-[#868d9b65] transition-all
+}
+
+body {
+    @apply bg-black
+}
