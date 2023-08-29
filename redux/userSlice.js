@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+
 const initialState = {
     username: null,
     name: null,
@@ -28,6 +29,8 @@ const userSlice = createSlice({
         state.uid = null
         state.photoUrl = null
     }
+
+   
 
   }
 });

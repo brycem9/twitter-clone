@@ -1,3 +1,5 @@
+import { auth } from "@/firebase";
+import { closeLoginModal, closeSignUpModal } from "@/redux/modalSlice";
 import { signOutUser } from "@/redux/userSlice";
 import {
   HomeIcon,
@@ -11,22 +13,25 @@ import {
 } from "@heroicons/react/outline";
 import { signOut } from "firebase/auth";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
-
-
-
-async function handleSignOut() {
-  await signOut(auth)
-  dispatch(signOutUser())
-}
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user);
+
+  async function handleSignOut() {
+    await signOut(auth);
+    dispatch(signOutUser());
+    dispatch(closeSignUpModal());
+    dispatch(closeLoginModal())
+  }
   return (
     <div
       className="h-full  hidden sm:flex flex-col fixed
-    xl:ml-24 "
+    xl:ml-24 pb-3"
     >
-      <nav className="h-full xl:space-y-1.5 space-x-1.5 relative">
+      <nav className="h-full xl:space-y-1.5 space-x-1.5 relative ">
         <div className="xl:p-3 flex  xl:justify-start justify-center items-center py-3">
           <Image
             className="invert"
@@ -48,15 +53,21 @@ export default function Sidebar() {
         >
           Tweet
         </button>
-        <div className="absolute flex justify-center items-center xl:p-3 p-0.5  space-x-3 hover:bg-white hover:bg-opacity-10 rounded-full cursor-pointer bottom-0">
-          <img
-            className="w-10 h-10 rounded-full object-cover"
-            src="/assets/kylie-jenner-instagram.jpg"
-          />
-          <div className="hidden xl:inline">
-            <h1 className="font-bold">name</h1>
-            <h1 className="text-gray-500">username</h1>
+        <div
+          onClick={handleSignOut}
+          className="absolute flex  items-center xl:p-3 p-0.5 xl:w-[275px] justify-between space-x-3 hover:bg-white hover:bg-opacity-10 transition duration-150 ease-out rounded-full cursor-pointer bottom-0"
+        >
+          <div className="flex items-center space-x-3">
+            <img
+              className="w-10 h-10 rounded-full object-cover"
+              src={user.photoUrl || "/assets/kylie-jenner-instagram.jpg"}
+            />
+            <div className="hidden xl:inline">
+              <h1 className="font-bold">{user.name}</h1>
+              <h1 className="text-gray-500">@{user.username}</h1>
+            </div>
           </div>
+
           <DotsHorizontalIcon className="h-5 hidden xl:inline" />
         </div>
       </nav>
@@ -66,7 +77,7 @@ export default function Sidebar() {
 
 function SidebarLink({ text, Icon }) {
   return (
-    <li className="hover-animation flex mb-3 xl:justify-start justify-center items-center text-xl space-x-3">
+    <li className="hover-animation transition duration-150 ease-out flex mb-3 xl:justify-start justify-center items-center text-xl space-x-3">
       <Icon className="h-7" />
       <span className="hidden xl:inline">{text}</span>
     </li>

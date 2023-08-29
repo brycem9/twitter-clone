@@ -1,7 +1,7 @@
 import { auth } from "@/firebase";
 import { closeSignUpModal, openSignUpModal } from "@/redux/modalSlice";
 import { setUser } from "@/redux/userSlice";
-
+import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { Modal } from "@mui/material";
 import {
   createUserWithEmailAndPassword,
@@ -9,13 +9,20 @@ import {
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 function SignupModal() {
   const isOpen = useSelector((state) => state.modals.signUpModalOpen);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter()
+
+  async function handleGuestSignIn(){
+    await signInWithEmailAndPassword(auth, "guest0001@gmail.com", "123456" )
+  }
 
   async function handleSignUp() {
     const userCredentials = await createUserWithEmailAndPassword(
@@ -23,6 +30,14 @@ function SignupModal() {
       email,
       password
     );
+
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: `./assets/profilePictures/pfp${Math.ceil(Math.random() * 6 )}.png`
+      })
+
+      router.reload()
+
   }
 
   useEffect(() => {
@@ -32,10 +47,10 @@ function SignupModal() {
       dispatch(
         setUser({
           username: currentUser.email.split("@")[0],
-          name: null,
+          name: currentUser.displayName,
           email: currentUser.email,
           uid: currentUser.uid,
-          photoUrl: null,
+          photoUrl: currentUser.photoURL
         })
       );
     });
@@ -62,7 +77,7 @@ function SignupModal() {
     md:h-[600px] flex justify-center"
         >
           <div className="w-[90%] mt-8 flex flex-col">
-            <button className="bg-white text-black w-full font-bold text-lg p-2 rounded-md">
+            <button onClick={handleGuestSignIn} className="bg-white text-black w-full font-bold text-lg p-2 rounded-md">
               Sign in as Guest
             </button>
             <h1 className="text-center mt-4 font-bold text-lg">or</h1>
@@ -74,6 +89,7 @@ function SignupModal() {
           p-6 mt-8"
               placeholder="Username"
               type="text"
+              onChange={(event) => setName(event.target.value)}
             />
             <input
               className="h-10 rounded-md bg-transparent border border-gray-700
