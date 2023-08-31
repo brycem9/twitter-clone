@@ -140,7 +140,7 @@ export function TweetHeader({
   image,
 }) {
   return (
-    <div className="flex space-x-3 p-6  border-gray-700">
+    <div className="flex space-x-3 p-4  border-gray-700">
       <img
         className="w-[60px] h-[60px] rounded-full object-cover"
         src={photoUrl || "assets/profilePictures/default_profile_400x400.png"}
@@ -150,9 +150,9 @@ export function TweetHeader({
           <div className="flex items-center space-x-2">
             {" "}
             <h1 className="text-white font-bold">{name}</h1>
-            <span>@{username}</span>
-            <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-            <Moment className="whitespace" fromNow>
+            <span className="text-sm">@{username}</span>
+            <div className="w-1 h-1 text-sm bg-gray-500 rounded-full"></div>
+            <Moment className="text-sm" fromNow>
               {timestamp}
             </Moment>
           </div>
