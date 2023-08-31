@@ -146,7 +146,7 @@ export function TweetHeader({
       />
       <div>
         <div className="flex text-gray-500">
-          <div className="flex items-center space-x-0.5">
+          <div className="flex items-center space-x-2">
             {" "}
             <h1 className="text-white font-bold">{name}</h1>
             <span>@{username}</span>
