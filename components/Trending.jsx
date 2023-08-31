@@ -17,32 +17,33 @@ function Trending() {
           type="text"
           placeholder="Search Twitter"
         />
+        
       </div>
       <div className="w-[300px] h-[500px] bg-[#16181C] rounded-3xl mt-3">
         <h1 className="font-bold text-xl p-3">Whats Happening</h1>
         <div className="p-3 relative hover-animation2">
           <DotsHorizontalIcon className="w-5 text-gray-600 absolute right-4" />
-          <p className="text-xs text-gray-500">Trending in US</p>
-          <h1 className="text-[15px] font-bold">China</h1>
+          <p className="text-xs text-gray-500">US Open · Live</p>
+          <h1 className="text-[15px] font-bold">US Open Tennis 2023</h1>
           <p className="text-xs text-gray-500">340K Tweets</p>
         </div>
         <div className="p-3 relative hover-animation2">
           <DotsHorizontalIcon className="w-5 text-gray-600 absolute right-4" />
-          <p className="text-xs text-gray-500">Trending in US</p>
-          <h1 className="text-[15px] font-bold">China</h1>
+          <p className="text-xs text-gray-500">Only on Twitter · Trending</p>
+          <h1 className="text-[15px] font-bold">#SuperBlueMoon</h1>
           <p className="text-xs text-gray-500">340K Tweets</p>
         </div>
         <div className="p-3 relative hover-animation2">
           <DotsHorizontalIcon className="w-5 text-gray-600 absolute right-4" />
-          <p className="text-xs text-gray-500">Trending in US</p>
-          <h1 className="text-[15px] font-bold">China</h1>
-          <p className="text-xs text-gray-500">340K Tweets</p>
+          <p className="text-xs text-gray-500">Trending in Florida</p>
+          <h1 className="text-[15px] font-bold">#HHN32</h1>
+          <p className="text-xs text-gray-500">1.3K Tweets</p>
         </div>
         <div className="p-3 relative hover-animation2">
           <DotsHorizontalIcon className="w-5 text-gray-600 absolute right-4" />
-          <p className="text-xs text-gray-500">Trending in US</p>
-          <h1 className="text-[15px] font-bold">China</h1>
-          <p className="text-xs text-gray-500">340K Tweets</p>
+          <p className="text-xs text-gray-500">K-Pop · Trending</p>
+          <h1 className="text-[15px] font-bold">NewJeans</h1>
+          <p className="text-xs text-gray-500">221K Tweets</p>
         </div>
         <div className="p-3 relative hover-animation2">
           <DotsHorizontalIcon className="w-5 text-gray-600 absolute right-4" />
