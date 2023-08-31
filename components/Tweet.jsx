@@ -78,7 +78,7 @@ function Tweet({ data, id }) {
         image={data?.image}
       />
 
-      <div className="p-4 pl-7
+      <div className="p-1 pb-4 pl-7
        ml-16 flex justify-between space-x-14 text-gray-500">
         <div
           className="flex justify-center items-center space-x-2"
@@ -145,7 +145,7 @@ export function TweetHeader({
         className="w-[60px] h-[60px] rounded-full object-cover"
         src={photoUrl || "assets/profilePictures/default_profile_400x400.png"}
       />
-      <div>
+      <div className="">
         <div className="flex text-gray-500">
           <div className="flex items-center space-x-2">
             {" "}
