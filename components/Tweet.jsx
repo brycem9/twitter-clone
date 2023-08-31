@@ -149,11 +149,12 @@ export function TweetHeader({
         src={photoUrl || "assets/profilePictures/default_profile_400x400.png"}
       />
       <div>
-        <div className="flex items-center space-x-2 text-gray-500">
-          <h1 className="text-white font-bold">{name}</h1>
+        <div className="flex text-gray-500">
+          <div className="flex items-center space-x-2"> <h1 className="text-white font-bold">{name}</h1>
           <span>@{username}</span>
           <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-          <Moment fromNow>{timestamp}</Moment>
+          <Moment fromNow>{timestamp}</Moment></div>
+         
         </div>
         <span>{text}</span>
 
