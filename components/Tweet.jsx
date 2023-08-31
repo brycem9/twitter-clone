@@ -151,7 +151,9 @@ export function TweetHeader({
             <h1 className="text-white font-bold">{name}</h1>
             <span>@{username}</span>
             <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-            <Moment fromNow>{timestamp}</Moment>
+            <Moment className="whitespace-nowrap" fromNow>
+              {timestamp}
+            </Moment>
           </div>
         </div>
         <span>{text}</span>
