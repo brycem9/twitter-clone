@@ -138,11 +138,7 @@ export function TweetHeader({
   photoUrl,
   image,
 }) {
-
-
-
   return (
-    
     <div className="flex space-x-3 p-3  border-gray-700">
       <img
         className="w-[60px] h-[60px] rounded-full object-cover"
@@ -150,15 +146,22 @@ export function TweetHeader({
       />
       <div>
         <div className="flex text-gray-500">
-          <div className="flex items-center space-x-2"> <h1 className="text-white font-bold">{name}</h1>
-          <span>@{username}</span>
-          <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-          <Moment fromNow>{timestamp}</Moment></div>
-         
+          <div className="flex items-center space-x-1">
+            {" "}
+            <h1 className="text-white font-bold">{name}</h1>
+            <span>@{username}</span>
+            <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+            <Moment fromNow>{timestamp}</Moment>
+          </div>
         </div>
         <span>{text}</span>
 
-        {image && <img className="mt-4 rounded-lg object-cover max-h-80 border-[1px] border-[#2F3336]" src={image} />}
+        {image && (
+          <img
+            className="mt-4 rounded-lg object-cover max-h-80 border-[1px] border-[#2F3336]"
+            src={image}
+          />
+        )}
       </div>
     </div>
   );
