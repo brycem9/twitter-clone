@@ -78,7 +78,8 @@ function Tweet({ data, id }) {
         image={data?.image}
       />
 
-      <div className="p-3 ml-16 flex space-x-14 text-gray-500">
+      <div className="p-4 pl-7
+       ml-16 flex justify-between space-x-14 text-gray-500">
         <div
           className="flex justify-center items-center space-x-2"
           onClick={(event) => {
